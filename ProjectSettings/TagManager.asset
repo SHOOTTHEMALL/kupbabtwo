@@ -8,6 +8,8 @@ TagManager:
   - GROUND
   - tree
   - fire
+  - water
+  - blueChon
   layers:
   - Default
   - TransparentFX

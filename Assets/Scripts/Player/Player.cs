@@ -15,13 +15,16 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private WaitForSeconds ws;
     private float delay = 3f;
-
+    private bool getWater;
 
     public GameObject Fire;
     public GameObject tree;
     public GameObject branch;
     public GameObject skyB;
     public GameObject skyD;
+    public GameObject blue;
+    public GameObject red;
+    public GameObject yellow;
     public bool dir = false;
     public bool isSlow = false; // 느리게 걷고있는가
     public float divideSlowSpeed = 0.5f; // 느리게걸을때 speed * dividespeed로 이속감소
@@ -134,10 +137,12 @@ public class Player : MonoBehaviour
             tree.SetActive(false);
             state = PlayerState.Unstable;
             branch.SetActive(true);
-            skyB.SetActive(false);
-            skyD.SetActive(true);
         }
-        Debug.Log(Speed);
+
+        if(!isSlow)
+        {
+            getWater = false;
+        }
     }
 
     public void TurnEvent()
@@ -194,6 +199,8 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerState.Unstable:
                     Speed = 12;
+                    skyB.SetActive(false);
+                    skyD.SetActive(true);
                     break;
                 case PlayerState.Fear:
                     Speed = 8;
@@ -227,6 +234,16 @@ public class Player : MonoBehaviour
             isBroken = true;
             
             Debug.Log("dks");
+        }
+
+        if(collision.gameObject.CompareTag("water"))
+        {
+            getWater = true;
+        }
+
+        if(collision.gameObject.CompareTag("blueChon"))
+        {
+            Destroy(blue);
         }
     }
 
