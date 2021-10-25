@@ -54,6 +54,11 @@ public class AxeScript : Item
         {
             GameManager.Instance.player.digCount++;
         }
+        if(GameManager.Instance.player.getAxetwo)
+        {
+            Destroy(GameManager.Instance.player.blue);
+        }
+
         Debug.Log("µµ³¢ »ç¿ëÁß");
         base.Use();
     }

@@ -15,8 +15,9 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private WaitForSeconds ws;
     private float delay = 3f;
-    private bool getWater;
+    private bool getWater = false;
 
+    public bool getAxetwo = true;
     public GameObject Fire;
     public GameObject tree;
     public GameObject branch;
@@ -243,7 +244,13 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.CompareTag("redChon"))
         {
-            Destroy(blue);
+            if(getWater)
+            Destroy(red);
+        }
+
+        if(collision.gameObject.CompareTag("blueChon"))
+        {
+            getAxetwo = true;
         }
     }
 
@@ -252,6 +259,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("tree"))
         {
             isBroken = false;
+
+            Debug.Log("成成捞");
+        }
+
+        if (collision.gameObject.CompareTag("blueChon"))
+        {
+            getAxetwo = false;
 
             Debug.Log("成成捞");
         }
