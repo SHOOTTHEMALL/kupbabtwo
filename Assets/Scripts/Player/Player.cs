@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             branch.SetActive(true);
         }
 
-        if(!isSlow)
+        if(!isSlow && getWater)
         {
             getWater = false;
         }
