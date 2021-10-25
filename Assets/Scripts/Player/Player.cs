@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
             getWater = true;
         }
 
-        if(collision.gameObject.CompareTag("blueChon"))
+        if(collision.gameObject.CompareTag("redChon"))
         {
             Destroy(blue);
         }
