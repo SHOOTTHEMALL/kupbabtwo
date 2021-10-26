@@ -13,7 +13,6 @@ public class AxeScript : Item
     private bool getAxe = true;
     private WaitForSeconds ws;
     private float delay = 0.5f;
-    private float time = 0f;
 
     private void Start()
     {
@@ -60,12 +59,12 @@ public class AxeScript : Item
         if(GameManager.Instance.player.isBroken == true)
         {
             GameManager.Instance.player.digCount++;
+            StartCoroutine(hit());
         }
+
         if(GameManager.Instance.player.getAxetwo)
         {
             Destroy(GameManager.Instance.player.blue);
-            time += Time.deltaTime;
-            StartCoroutine(hit());
         }
 
         Debug.Log("µµ³¢ »ç¿ëÁß");

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum ItemType
 {
     AXE,
-    WATER,
+    HAND,
     PAPER
 }
 

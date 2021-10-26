@@ -16,9 +16,8 @@ public class Player : MonoBehaviour
     private WaitForSeconds ws;
     private float delay = 3f;
 
-    private bool getWater = false;
-
-    public bool getAxetwo = true;
+    public bool getWater = false;
+    public bool getAxetwo = false;
     public GameObject Fire;
     public GameObject tree;
     public GameObject branch;
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour
     public bool isBroken = false;
     public bool isTurnedLastUpdate = false; // Turn되면 true 되고 FixedUpdate에서 false
     public int digCount = 0;
+    public bool isYellow = false;
 
     [HideInInspector]
     public LayerMask collisionlayer;
@@ -113,8 +113,6 @@ public class Player : MonoBehaviour
             GameManager.Instance.Action(Obj); // 물체를 감지하면 대사가 나오는 조건문
             Debug.Log("왜안돼");
         }
-
-
         
 
         
@@ -217,7 +215,13 @@ public class Player : MonoBehaviour
 
     }
 
-
+    public void HandFucntion()
+    {
+        if(getWater && isSlow)
+        {
+            Destroy(red);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -238,21 +242,7 @@ public class Player : MonoBehaviour
             Debug.Log("dks");
         }
 
-        if(collision.gameObject.CompareTag("water"))
-        {
-            getWater = true;
-        }
-
-        if(collision.gameObject.CompareTag("redChon"))
-        {
-            if(getWater)
-            Destroy(red);
-        }
-
-        if(collision.gameObject.CompareTag("blueChon"))
-        {
-            getAxetwo = true;
-        }
+       
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -269,6 +259,30 @@ public class Player : MonoBehaviour
             getAxetwo = false;
 
             Debug.Log("냥냥이");
+        }
+
+        if (collision.gameObject.CompareTag("yellowChon"))
+        {
+            isYellow = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("blueChon"))
+        {
+            getAxetwo = true;
+        }
+
+        if (collision.gameObject.CompareTag("water"))
+        {
+            Debug.Log("물을 받음");
+            getWater = true;
+        }
+
+        if (collision.gameObject.CompareTag("yellowChon"))
+        {
+            isYellow = true;
         }
     }
 }

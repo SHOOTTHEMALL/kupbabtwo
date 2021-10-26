@@ -47,6 +47,12 @@ public class BranchScript : Item
     {
         GameManager.Instance.player.StopFire();
         GameManager.Instance.player.isFired = true;
+
+        if (GameManager.Instance.player.isYellow)
+        {
+            Destroy(GameManager.Instance.player.yellow);
+        }
+
         Debug.Log("나뭇가지 사용중");
         base.Use();
     }

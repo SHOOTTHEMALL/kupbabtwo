@@ -31,6 +31,7 @@ public class playerItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             DropEquip();
+
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -41,6 +42,7 @@ public class playerItem : MonoBehaviour
             }
             else
             {
+                player.HandFucntion();
                 Debug.Log("도구가 없음!");
             }
         }
