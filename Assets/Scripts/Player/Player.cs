@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private WaitForSeconds ws;
     private float delay = 3f;
+
     private bool getWater = false;
 
     public bool getAxetwo = true;

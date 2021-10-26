@@ -11,7 +11,14 @@ public class AxeScript : Item
 
     const string saveFileName = "ItemSave.sav";
     private bool getAxe = true;
+    private WaitForSeconds ws;
+    private float delay = 0.5f;
+    private float time = 0f;
 
+    private void Start()
+    {
+        ws = new WaitForSeconds(delay);
+    }
     private string getFilePath(string fileName)
     {
         return Application.persistentDataPath + "/" + fileName;
@@ -57,6 +64,8 @@ public class AxeScript : Item
         if(GameManager.Instance.player.getAxetwo)
         {
             Destroy(GameManager.Instance.player.blue);
+            time += Time.deltaTime;
+            StartCoroutine(hit());
         }
 
         Debug.Log("µµ³¢ »ç¿ëÁß");
@@ -70,5 +79,13 @@ public class AxeScript : Item
         Save(getAxe);
     }
 
-    
+    private IEnumerator hit()
+    {
+            GameManager.Instance.player.tree.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return ws;
+                GameManager.Instance.player.tree.GetComponent<SpriteRenderer>().color = Color.white;
+                
+            
+        
+    }
 }
