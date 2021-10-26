@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 83216979}
   - component: {fileID: 83216978}
   - component: {fileID: 83216980}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pond
   m_TagString: water
   m_Icon: {fileID: 0}
@@ -798,7 +798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &462446223
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8013,7 +8013,6 @@ GameObject:
   - component: {fileID: 1564140377}
   - component: {fileID: 1564140376}
   - component: {fileID: 1564140375}
-  - component: {fileID: 1564140374}
   m_Layer: 7
   m_Name: Gold Line (1)
   m_TagString: fire
@@ -8021,27 +8020,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1564140374
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564140373}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!61 &1564140375
 BoxCollider2D:
   m_ObjectHideFlags: 0
