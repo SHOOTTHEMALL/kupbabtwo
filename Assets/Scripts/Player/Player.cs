@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private WaitForSeconds ws;
     private float delay = 3f;
+    private Vector2 twoVer = new Vector2(190,-0.88f);
+    private Vector2 playerPosition;
 
+    public bool isDownArrow = false;
     public bool getWater = false;
     public bool getAxetwo = false;
     public GameObject Fire;
@@ -34,12 +37,6 @@ public class Player : MonoBehaviour
     public bool isTurnedLastUpdate = false; // Turn되면 true 되고 FixedUpdate에서 false
     public int digCount = 0;
     public bool isYellow = false;
-
-    [HideInInspector]
-    public LayerMask collisionlayer;
-
-
-
 
     public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
     
@@ -67,6 +64,8 @@ public class Player : MonoBehaviour
         turnAction += (x) => { }; // 빈걸로 초기화
 
         StartCoroutine(DoFeeling());
+
+        playerPosition = gameObject.transform.position;
     }
 
     private void OnEnable()
@@ -129,7 +128,12 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            if(isDownArrow)
+            {
+                Debug.Log("이동해이동");
+                playerPosition = twoVer;
+                transform.position = playerPosition;
+            }
         }
 
         if(digCount > 2)
@@ -242,7 +246,10 @@ public class Player : MonoBehaviour
             Debug.Log("dks");
         }
 
-       
+        if(collision.gameObject.CompareTag("sike"))
+        {
+            isDownArrow = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -264,6 +271,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("yellowChon"))
         {
             isYellow = false;
+        }
+
+        if (collision.gameObject.CompareTag("sike"))
+        {
+            isDownArrow = false;
         }
     }
 

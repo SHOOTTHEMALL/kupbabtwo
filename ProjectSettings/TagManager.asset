@@ -12,6 +12,7 @@ TagManager:
   - blueChon
   - redChon
   - yellowChon
+  - sike
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Objection
   - BuS
   - PLAYERRELATED
-  - Pond
+  - 
   - 
   - 
   - 
