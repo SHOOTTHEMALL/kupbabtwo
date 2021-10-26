@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("fire"))
         {
-
+            Debug.Log("³ª¿Í¶ó");
             if (Fire != null && !isFired)
             {
                 Fire.gameObject.SetActive(true);
