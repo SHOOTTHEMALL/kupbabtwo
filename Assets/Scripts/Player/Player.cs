@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private WaitForSeconds ws;
     private float delay = 3f;
-    private Vector2 twoVer = new Vector2(190,-0.88f);
+    private Vector2 twoVer = new Vector2(190,-2.37f);
     private Vector2 playerPosition;
 
     public bool isDownArrow = false;
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public bool isTurnedLastUpdate = false; // Turn되면 true 되고 FixedUpdate에서 false
     public int digCount = 0;
     public bool isYellow = false;
+    public GameObject panel;
 
     public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
     
@@ -249,6 +250,12 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("sike"))
         {
             isDownArrow = true;
+        }
+
+        if(collision.gameObject.CompareTag("skillCheck"))
+        {
+            panel.SetActive(true);
+            GameManager.Instance.CircleFunctionStart();
         }
     }
 

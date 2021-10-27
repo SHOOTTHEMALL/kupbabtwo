@@ -10,7 +10,7 @@ public class CircleSpacePuzzle : MonoBehaviour
     public Image check;
     public bool checkStart = false;
     public bool checkComplete = false;
-    private float checkAmount = 0.1f; // 1=100% 0.1=10% 범위크기
+    private float checkAmount = 0.12f; // 1=100% 0.1=10% 범위크기
 
     void Start()
     {
