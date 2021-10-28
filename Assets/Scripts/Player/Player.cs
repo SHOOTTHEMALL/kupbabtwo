@@ -255,7 +255,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("skillCheck"))
         {
             panel.SetActive(true);
-            GameManager.Instance.CircleFunctionStart();
+            GameManager.Instance.CircleFunctionStart(collision.gameObject);
         }
     }
 

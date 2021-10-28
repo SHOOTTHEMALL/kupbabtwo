@@ -11,14 +11,7 @@ public class GameManager : MonoBehaviour
         get { return instance; }
     }
 
-    private void Awake()
-    {
-        if(instance != null)
-        {
-            Debug.LogError("adasd");
-        }
-        instance = this;
-    }
+    
 
     public sayManager sayManager;
     public Animator sayPanel;
@@ -33,12 +26,24 @@ public class GameManager : MonoBehaviour
 
     public List<Item> itemList = new List<Item>(); // 콜렉션 완료
 
-    public Image emptyImage;
     public Image fillImage;
-    public Image check;
+    public RectTransform check;
+    private RectTransform reload;
     public bool checkStart = false;
     public bool checkComplete = false;
-    private float checkAmount = 0.12f; // 1=100% 0.1=10% 범위크기
+
+    GameObject treeObj;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("adasd");
+        }
+        instance = this;
+
+        reload = fillImage.rectTransform.gameObject.GetComponent<RectTransform>();
+    }
 
     public void Action(GameObject scanObj)
     {
@@ -86,46 +91,29 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (checkStart)
+        if (fillImage.transform.position.x < 1f || !checkComplete)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                checkComplete = true;
-                checkStart = false;
-                // 범위안에들어오면
-
-                if (fillImage.fillAmount >= (360 - check.transform.rotation.eulerAngles.z) / 360 &&
-                   fillImage.fillAmount <= (360 - check.transform.rotation.eulerAngles.z) / 360 + checkAmount)
-                {
-                    // 성공 처리
-                    Debug.Log("Success");
-                    
-                    instance.player.panel.SetActive(false);
-                }
-                else
-                {
-                    // 실패 처리
-                    Debug.Log("fail");
-                    instance.player.panel.SetActive(false);
-                }
-            }
-
-            if (fillImage.fillAmount < 1f || !checkComplete)
-            {
-                fillImage.fillAmount += Time.deltaTime / 2;
-            }
+            fillImage.fillAmount += Time.deltaTime / 3;
         }
     }
 
-    public void CircleFunctionStart()
+
+
+    public void CircleFunctionStart(GameObject obj)
     {
         checkStart = true;
+        treeObj = obj;
+        Vector2 aPosition = check.anchoredPosition;
+        aPosition.x = Random.Range(1, 10);
+        check.anchoredPosition = aPosition;
+        Debug.Log("angle : " + check.transform.position.x);
+    }
 
-        emptyImage.gameObject.SetActive(true);
-        fillImage.gameObject.SetActive(true);
-        check.fillAmount = checkAmount;
-        check.rectTransform.rotation = Quaternion.Euler(new Vector3
-            (0, 0, Random.Range(36, 216)));
-        Debug.Log("angle : " + check.transform.rotation.eulerAngles.z);
+    public bool CheckSuccess()
+    {
+        float currentPoint = reload.rect.width * fillImage.fillAmount;
+        Vector2 aPosition = check.anchoredPosition;
+
+        return currentPoint >= aPosition.x && currentPoint <= aPosition.x + check.rect.width;
     }
 }
