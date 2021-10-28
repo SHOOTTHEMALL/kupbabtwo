@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if (fillImage.transform.position.x < 1f || !checkComplete)
         {
-            fillImage.fillAmount += Time.deltaTime / 3;
+            fillImage.fillAmount = Mathf.Repeat( 0, 1); //해결해야하는것
         }
     }
 
