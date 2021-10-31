@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     private WaitForSeconds ws;
     private float delay = 3f;
     private Vector2 twoVer = new Vector2(190,-2.37f);
+    private Vector2 tigerPoint = new Vector2(248.8f,0);
     private Vector2 playerPosition;
+    private float time = 0;
 
     public bool isDownArrow = false;
     public bool getWater = false;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     public int digCount = 0;
     public bool isYellow = false;
     public GameObject panel;
+    public GameObject Tiger;
 
     public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
     
@@ -148,6 +151,15 @@ public class Player : MonoBehaviour
         {
             getWater = false;
         }
+
+        time += Time.deltaTime;
+        Debug.Log(playerPosition);
+        if (time > 3 )
+        {
+            playerPosition = tigerPoint;
+            transform.position = playerPosition;
+            Tiger.SetActive(true);
+        }
     }
 
     public void TurnEvent()
@@ -256,6 +268,7 @@ public class Player : MonoBehaviour
         {
             panel.SetActive(true);
             GameManager.Instance.CircleFunctionStart(collision.gameObject);
+            GameManager.Instance.CheckSuccess();
         }
     }
 

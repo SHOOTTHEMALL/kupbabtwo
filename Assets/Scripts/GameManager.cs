@@ -91,20 +91,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (fillImage.transform.position.x < 1f || !checkComplete)
-        {
-            fillImage.fillAmount += Time.deltaTime / 20  ; //해결해야하는것
-        }
+        //if (fillImage.transform.position.x < 1f || !checkComplete)
+        //{
+        //    fillImage.fillAmount += Time.deltaTime / 20  ; //해결해야하는것
+        //}
     }
 
 
 
     public void CircleFunctionStart(GameObject obj)
     {
+        check.gameObject.SetActive(true);
         checkStart = true;
         treeObj = obj;
         Vector2 aPosition = check.anchoredPosition;
-        aPosition.x = Random.Range(1, 10);
+        aPosition.x = Random.Range(600, 900);
         check.anchoredPosition = aPosition;
         Debug.Log("angle : " + check.transform.position.x);
     }
