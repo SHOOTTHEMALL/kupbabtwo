@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
     private WaitForSeconds ws;
     private float delay = 3f;
     private Vector2 twoVer = new Vector2(190,-2.37f);
-    private Vector2 tigerPoint = new Vector2(248.8f,0);
+    private Vector2 tigerPoint = new Vector2(249, -2.37f);
     private Vector2 playerPosition;
-    private float time = 0;
+    [SerializeField]private float time = 0;
 
     public bool isDownArrow = false;
     public bool getWater = false;
@@ -70,6 +70,8 @@ public class Player : MonoBehaviour
         StartCoroutine(DoFeeling());
 
         playerPosition = gameObject.transform.position;
+
+        Invoke("startChase", 3);
     }
 
     private void OnEnable()
@@ -153,13 +155,13 @@ public class Player : MonoBehaviour
         }
 
         time += Time.deltaTime;
-        Debug.Log(playerPosition);
-        if (time > 3 )
-        {
-            playerPosition = tigerPoint;
-            transform.position = playerPosition;
-            Tiger.SetActive(true);
-        }
+    }
+
+    public void startChase()
+    {
+        Tiger.SetActive(true);
+        playerPosition = tigerPoint;
+        transform.position = playerPosition;
     }
 
     public void TurnEvent()
