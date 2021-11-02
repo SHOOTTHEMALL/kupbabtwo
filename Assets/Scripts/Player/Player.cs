@@ -270,7 +270,6 @@ public class Player : MonoBehaviour
         {
             panel.SetActive(true);
             GameManager.Instance.CircleFunctionStart(collision.gameObject);
-            GameManager.Instance.CheckSuccess();
         }
     }
 
