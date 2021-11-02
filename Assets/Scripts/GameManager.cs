@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private float fillImageWidth; //는 정보를 가져오는 사각형이다.
 
-    GameObject treeObj;
+    public GameObject treeObj;
 
     private void Awake()
     {
@@ -117,10 +117,15 @@ public class GameManager : MonoBehaviour
                 {
                     // 성공 처리
                     Debug.Log("Success");
+                    Destroy(treeObj.gameObject);
+                    player.panel.SetActive(false);
+                    fillImage.fillAmount = 0;
                 }
                 else
                 {
                     Debug.Log("Fail");
+                    player.panel.SetActive(false);
+                    fillImage.fillAmount = 0;
                 }
                 
             }
@@ -141,7 +146,7 @@ public class GameManager : MonoBehaviour
         treeObj = obj;
         check.fillAmount = checkAmount;
         
-        float x = Random.Range(200, fillImageWidth);
+        float x = Random.Range(200, fillImageWidth);//200에서 앵커포지션까지 중에서 구함.
         Debug.Log(x);
         
         check.transform.localPosition = new Vector3(x,0,0);
