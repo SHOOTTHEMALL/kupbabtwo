@@ -155,6 +155,8 @@ public class Player : MonoBehaviour
         }
 
         time += Time.deltaTime;
+
+        StartCoroutine(showCheck());
     }
 
     public void startChase()
@@ -242,6 +244,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private IEnumerator showCheck()
+    {
+        float randomTime = UnityEngine.Random.Range(3, 10);
+        while (true)
+        {
+            panel.SetActive(true);
+            yield return new WaitForSeconds (randomTime);
+            GameManager.Instance.BossCheck();
+        }
+
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("fire"))

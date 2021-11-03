@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tiger : MonoBehaviour
 {
-    private Vector2 tigerPos;
     public GameObject tiger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,15 @@ public class Tiger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tiger.transform.Translate(Vector3.right * 0.09f);
+        tiger.transform.Translate(Vector3.right * 0.2f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("mudang"))
+        {
+            Debug.Log("무당살려~~");
+            tiger.SetActive(false);
+        }
     }
 }

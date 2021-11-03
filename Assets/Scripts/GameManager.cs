@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     public Image check;
     public bool checkStart = false;
     public bool checkComplete = false;
-    private float checkAmount = 0.1f; // 1=100% 0.1=10% 범위크
+    private float checkAmount = 0.4f; // 1=100% 0.1=10% 범위크
+    private float checkAmountTwo = 0.1f;
 
     private float fillImageWidth; //는 정보를 가져오는 사각형이다.
 
@@ -116,14 +117,14 @@ public class GameManager : MonoBehaviour
                     && fillPosition <= check.transform.localPosition.x)
                 {
                     // 성공 처리
-                    Debug.Log("Success");
+                    //Debug.Log("Success");
                     Destroy(treeObj.gameObject);
                     player.panel.SetActive(false);
                     fillImage.fillAmount = 0;
                 }
                 else
                 {
-                    Debug.Log("Fail");
+                    //Debug.Log("Fail");
                     player.panel.SetActive(false);
                     fillImage.fillAmount = 0;
                 }
@@ -147,9 +148,21 @@ public class GameManager : MonoBehaviour
         check.fillAmount = checkAmount;
         
         float x = Random.Range(200, fillImageWidth);//200에서 앵커포지션까지 중에서 구함.
-        Debug.Log(x);
+        //Debug.Log(x);
         
         check.transform.localPosition = new Vector3(x,0,0);
+        //Debug.Log("position : " + check.transform.position.x);
+    }
+
+    public void BossCheck()
+    {
+        check.gameObject.SetActive(true);
+        checkStart = true;
+        check.fillAmount = checkAmountTwo;
+
+        float x = Random.Range(200, fillImageWidth);//200에서 앵커포지션까지 중에서 구함.
+
+        check.transform.localPosition = new Vector3(x, 0, 0);
         //Debug.Log("position : " + check.transform.position.x);
     }
 }
