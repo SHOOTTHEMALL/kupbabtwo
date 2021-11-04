@@ -12,7 +12,7 @@ public class AxeScript : Item
     const string saveFileName = "ItemSave.sav";
     private bool getAxe = true;
     private WaitForSeconds ws;
-    private float delay = 0.5f;
+    private float delay = 0.3f;
 
     private void Start()
     {
@@ -62,11 +62,16 @@ public class AxeScript : Item
             StartCoroutine(hit());
         }
 
+        if(GameManager.Instance.player.isTiger)
+        {
+            GameManager.Instance.player.tigetCount++;
+            StartCoroutine(hit1());
+        }
+
         if(GameManager.Instance.player.getAxetwo)
         {
             Destroy(GameManager.Instance.player.blue);
         }
-
         Debug.Log("µµ³¢ »ç¿ëÁß");
         base.Use();
     }
@@ -83,8 +88,12 @@ public class AxeScript : Item
             GameManager.Instance.player.tree.GetComponent<SpriteRenderer>().color = Color.red;
         yield return ws;
                 GameManager.Instance.player.tree.GetComponent<SpriteRenderer>().color = Color.white;
-                
-            
-        
+    }
+
+    private IEnumerator hit1()
+    {
+        GameManager.Instance.player.Tiger1.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return ws;
+        GameManager.Instance.player.Tiger1.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

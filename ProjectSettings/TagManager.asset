@@ -15,6 +15,7 @@ TagManager:
   - sike
   - skillCheck
   - mudang
+  - tiger
   layers:
   - Default
   - TransparentFX

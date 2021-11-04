@@ -37,11 +37,14 @@ public class Player : MonoBehaviour
     public float divideSlowSpeed = 0.5f; // 느리게걸을때 speed * dividespeed로 이속감소
     public bool isFired = false;
     public bool isBroken = false;
+    public bool isTiger = false;
     public bool isTurnedLastUpdate = false; // Turn되면 true 되고 FixedUpdate에서 false
     public int digCount = 0;
+    public int tigetCount = 0;
     public bool isYellow = false;
     public GameObject panel;
     public GameObject Tiger;
+    public GameObject Tiger1;
 
     public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
     
@@ -148,6 +151,11 @@ public class Player : MonoBehaviour
             tree.SetActive(false);
             state = PlayerState.Unstable;
             branch.SetActive(true);
+        }
+
+        if(tigetCount > 20)
+        {
+            Tiger1.SetActive(false);
         }
 
         if(!isSlow && getWater)
@@ -269,7 +277,14 @@ public class Player : MonoBehaviour
             Debug.Log("dks");
         }
 
-        if(collision.gameObject.CompareTag("sike"))
+        if (collision.gameObject.CompareTag("tiger"))
+        {
+            isTiger = true;
+
+            Debug.Log("dks");
+        }
+
+        if (collision.gameObject.CompareTag("sike"))
         {
             isDownArrow = true;
         }
@@ -286,6 +301,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("tree"))
         {
             isBroken = false;
+
+            Debug.Log("냥냥이");
+        }
+
+        if (collision.gameObject.CompareTag("tiger"))
+        {
+            isTiger = false;
 
             Debug.Log("냥냥이");
         }
