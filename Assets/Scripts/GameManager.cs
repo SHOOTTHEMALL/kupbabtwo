@@ -121,12 +121,14 @@ public class GameManager : MonoBehaviour
                     Destroy(treeObj.gameObject);
                     player.panel.SetActive(false);
                     fillImage.fillAmount = 0;
+                    Debug.Log("Success");
                 }
                 else
                 {
                     //Debug.Log("Fail");
                     player.panel.SetActive(false);
                     fillImage.fillAmount = 0;
+                    Debug.Log("Fail");
                 }
                 
             }

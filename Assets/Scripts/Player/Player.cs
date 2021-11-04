@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Vector2 tigerPoint = new Vector2(249, -2.37f);
     private Vector2 playerPosition;
     [SerializeField]private float time = 0;
+    
 
     public bool isDownArrow = false;
     public bool getWater = false;
@@ -111,7 +112,7 @@ public class Player : MonoBehaviour
         if (movingMan) // PlayerEquip¿¡ ¿¬°á
             GameManager.Instance.playerEquip.TurnItem(dir);
 
-        Debug.Log(Obj);
+        //Debug.Log(Obj);
         if (Input.GetButtonDown("Jump") && Obj != null)
         {
             Debug.Log(GameManager.Instance);   
@@ -156,7 +157,12 @@ public class Player : MonoBehaviour
 
         time += Time.deltaTime;
 
-        StartCoroutine(showCheck());
+        if(time>UnityEngine.Random.Range(3,10))
+        {
+            panel.SetActive(true);
+            GameManager.Instance.BossCheck();
+            time = 0;
+        }
     }
 
     public void startChase()
@@ -242,18 +248,6 @@ public class Player : MonoBehaviour
         {
             Destroy(red);
         }
-    }
-
-    private IEnumerator showCheck()
-    {
-        float randomTime = UnityEngine.Random.Range(3, 10);
-        while (true)
-        {
-            panel.SetActive(true);
-            yield return new WaitForSeconds (randomTime);
-            GameManager.Instance.BossCheck();
-        }
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
