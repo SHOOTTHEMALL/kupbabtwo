@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
 
         if(tigetCount > 20)
         {
-            Tiger1.SetActive(false);
+            Tiger1.transform.Translate(Vector3.right * 0.2f);
         }
 
         if(!isSlow && getWater)
