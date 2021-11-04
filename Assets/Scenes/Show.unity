@@ -11092,7 +11092,7 @@ MonoBehaviour:
   isYellow: 0
   panel: {fileID: 1414111322}
   Tiger: {fileID: 0}
-  Tiger1: {fileID: 0}
+  Tiger1: {fileID: 148266613}
   state: 0
 --- !u!114 &1805153228
 MonoBehaviour:
