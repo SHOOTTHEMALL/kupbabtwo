@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void Action(GameObject scanObj)
     {
         sObj = scanObj;
-        Debug.Log(sObj.name);
+        //Debug.Log(sObj.name);
         objData objData = sObj.GetComponent<objData>();
         Say(objData.id, objData.npc);
         sayPanel.SetBool("isShow", show);

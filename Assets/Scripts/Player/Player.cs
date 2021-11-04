@@ -115,9 +115,9 @@ public class Player : MonoBehaviour
         //Debug.Log(Obj);
         if (Input.GetButtonDown("Jump") && Obj != null)
         {
-            Debug.Log(GameManager.Instance);   
+            //Debug.Log(GameManager.Instance);   
             GameManager.Instance.Action(Obj); // 물체를 감지하면 대사가 나오는 조건문
-            Debug.Log("왜안돼");
+            //Debug.Log("왜안돼");
         }
         
 
@@ -157,12 +157,13 @@ public class Player : MonoBehaviour
 
         time += Time.deltaTime;
 
-        if(time>UnityEngine.Random.Range(3,10))
-        {
-            panel.SetActive(true);
-            GameManager.Instance.BossCheck();
-            time = 0;
-        }
+        //if(time>UnityEngine.Random.Range(3,10))
+        //{
+        //    panel.SetActive(true);
+        //    GameManager.Instance.BossCheck();
+        //    time = 0;
+        //} 호랑이가 뒤에서 쫒아오고 뭐였지 암튼 스킬체크 뜨는 무당 뒤진 때의 엔딩임
+
     }
 
     public void startChase()
@@ -174,7 +175,7 @@ public class Player : MonoBehaviour
 
     public void TurnEvent()
     {
-        Debug.Log("돌았습니다");
+        //Debug.Log("돌았습니다");
         isTurnedLastUpdate = true;
         sr.flipX = !dir;
         turnAction(dir);
