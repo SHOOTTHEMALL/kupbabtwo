@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         //    fillImage.fillAmount += Time.deltaTime / 2; //해결해야하는것
         //}
 
-        if (checkStart)
+        if (checkStart) //스킬체크
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void CircleFunctionStart(GameObject obj)
+    public void CircleFunctionStart(GameObject obj) //나무파괴 
     {
         check.gameObject.SetActive(true);
         checkStart = true;
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("position : " + check.transform.position.x);
     }
 
-    public void BossCheck()
+    public void BossCheck() //상시로 랜덤으로 뜨는 함수
     {
         check.gameObject.SetActive(true);
         checkStart = true;

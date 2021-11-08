@@ -23,7 +23,7 @@ public class AxeScript : Item
         return Application.persistentDataPath + "/" + fileName;
     }
 
-    public override bool Save(bool getItem)
+    public override bool Save(bool getItem) //저장
     {
         JObject axe = new JObject();
         axe.Add("getAxe", getAxe); //불러올 오브젝트
@@ -56,19 +56,19 @@ public class AxeScript : Item
 
     public override void Use()
     {
-        if(GameManager.Instance.player.isBroken == true)
+        if(GameManager.Instance.player.isBroken == true) //처음 왼쪽 도끼질
         {
             GameManager.Instance.player.digCount++;
             StartCoroutine(hit());
         }
 
-        if(GameManager.Instance.player.isTiger)
+        if(GameManager.Instance.player.isTiger) //호랑이 패는 부분 도끼로
         {
             GameManager.Instance.player.tigetCount++;
             StartCoroutine(hit1());
         }
 
-        if(GameManager.Instance.player.getAxetwo)
+        if(GameManager.Instance.player.getAxetwo) //파란천 부시기
         {
             Destroy(GameManager.Instance.player.blue);
         }
@@ -83,7 +83,7 @@ public class AxeScript : Item
         Save(getAxe);
     }
 
-    private IEnumerator hit()
+    private IEnumerator hit() //빨게졌다가 돌아오는 피격 표현
     {
             GameManager.Instance.player.tree.GetComponent<SpriteRenderer>().color = Color.red;
         yield return ws;

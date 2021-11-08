@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             SlowMove(false);
         }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow))  // 미로부분의 아랫키 누르면 다른 곳으로 이동하는거
         {
             if(isDownArrow)
             {
@@ -146,19 +146,19 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(digCount > 2)
+        if(digCount > 2) //3번 이상 쳐맞으면 나무가 부셔진당
         {
             tree.SetActive(false);
             state = PlayerState.Unstable;
             branch.SetActive(true);
         }
 
-        if(tigetCount > 20)
+        if(tigetCount > 20) //호랑이 21대 이상 맞으면 호랑이가 튐
         {
             Tiger1.transform.Translate(Vector3.right * 0.2f);
         }
 
-        if(!isSlow && getWater)
+        if(!isSlow && getWater) //물을 들고 있는가?
         {
             getWater = false;
         }
@@ -170,18 +170,18 @@ public class Player : MonoBehaviour
         //    panel.SetActive(true);
         //    GameManager.Instance.BossCheck();
         //    time = 0;
-        //} 호랑이가 뒤에서 쫒아오고 뭐였지 암튼 스킬체크 뜨는 무당 뒤진 때의 엔딩임
+        //} 호랑이가 뒤에서 쫒아오고 뭐였지 암튼 스킬체크 뜨는 무당 뒤진 때의 엔딩임 상시 체크
 
     }
 
-    public void startChase()
+    public void startChase() //호랑이가 쫒아옴 어흥
     {
         Tiger.SetActive(true);
         playerPosition = tigerPoint;
         transform.position = playerPosition;
     }
 
-    public void TurnEvent()
+    public void TurnEvent() 
     {
         //Debug.Log("돌았습니다");
         isTurnedLastUpdate = true;
@@ -219,7 +219,7 @@ public class Player : MonoBehaviour
         rg.velocity = moveDir * Speed;
     }
 
-    public void StopFire()
+    public void StopFire() //불 꺼
     {
         Fire.gameObject.SetActive(false);
     }
@@ -251,7 +251,7 @@ public class Player : MonoBehaviour
 
     }
 
-    public void HandFucntion()
+    public void HandFucntion() //빨간 천 부시기
     {
         if(getWater && isSlow)
         {
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("fire"))
+        if (collision.gameObject.CompareTag("fire")) //닿으면 불이 나온다 아잇 어
         {
             Debug.Log("나와라");
             if (Fire != null && !isFired)
@@ -270,26 +270,26 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("tree"))
+        if(collision.gameObject.CompareTag("tree")) //나무에 닿았을때 휘두르면 브로큰이 트루가 된다
         {
             isBroken = true;
             
             Debug.Log("dks");
         }
 
-        if (collision.gameObject.CompareTag("tiger"))
+        if (collision.gameObject.CompareTag("tiger"))//호랑이
         {
             isTiger = true;
 
             Debug.Log("dks");
         }
 
-        if (collision.gameObject.CompareTag("sike"))
+        if (collision.gameObject.CompareTag("sike"))//텔레포트 검은 구덩이
         {
             isDownArrow = true;
         }
 
-        if(collision.gameObject.CompareTag("skillCheck"))
+        if(collision.gameObject.CompareTag("skillCheck")) //스킬체크 나무에 닿는다
         {
             panel.SetActive(true);
             GameManager.Instance.CircleFunctionStart(collision.gameObject);
@@ -298,33 +298,33 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("tree"))
+        if (collision.gameObject.CompareTag("tree")) //나무에서 떨어지몀ㄴ? 아무일도 안일어남 밑도 마찬가지임
         {
             isBroken = false;
 
             Debug.Log("냥냥이");
         }
 
-        if (collision.gameObject.CompareTag("tiger"))
+        if (collision.gameObject.CompareTag("tiger")) // 호랑이
         {
             isTiger = false;
 
             Debug.Log("냥냥이");
         }
 
-        if (collision.gameObject.CompareTag("blueChon"))
+        if (collision.gameObject.CompareTag("blueChon")) //파란천
         {
             getAxetwo = false;
 
             Debug.Log("냥냥이");
         }
 
-        if (collision.gameObject.CompareTag("yellowChon"))
+        if (collision.gameObject.CompareTag("yellowChon")) //노란천
         {
             isYellow = false;
         }
 
-        if (collision.gameObject.CompareTag("sike"))
+        if (collision.gameObject.CompareTag("sike"))//검은 구덩이
         {
             isDownArrow = false;
         }
@@ -332,18 +332,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("blueChon"))
+        if (collision.gameObject.CompareTag("blueChon")) //파란천에 닿는 동안? 조건이 성립된다
         {
             getAxetwo = true;
         }
 
-        if (collision.gameObject.CompareTag("water"))
+        if (collision.gameObject.CompareTag("water")) //웅덩이에 닿으면 된다
         {
             Debug.Log("물을 받음");
             getWater = true;
         }
 
-        if (collision.gameObject.CompareTag("yellowChon"))
+        if (collision.gameObject.CompareTag("yellowChon"))//노란천
         {
             isYellow = true;
         }

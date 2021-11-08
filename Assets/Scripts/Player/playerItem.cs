@@ -36,7 +36,7 @@ public class playerItem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (playerEquip.currentItem != null)
+            if (playerEquip.currentItem != null) //빈손인 상태 아이템이 없는
             {
                 playerEquip.currentItem.Use();
             }

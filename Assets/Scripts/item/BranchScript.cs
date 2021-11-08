@@ -45,10 +45,10 @@ public class BranchScript : Item
 
     public override void Use()
     {
-        GameManager.Instance.player.StopFire();
-        GameManager.Instance.player.isFired = true;
+        GameManager.Instance.player.StopFire(); //사용하면 불이 멈춰진다
+        GameManager.Instance.player.isFired = true; 
 
-        if (GameManager.Instance.player.isYellow)
+        if (GameManager.Instance.player.isYellow) //노란천을 부신다
         {
             Destroy(GameManager.Instance.player.yellow);
         }
